@@ -12,15 +12,19 @@ public class Demo_5 {
 
 		// Write the Dynamic Queries
 
-		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/college", "root", "Omkarg@122");
+		try (
+		 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/college", "root", "Omkarg@122");)
+		{
 
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("Inter The ID");
 		int id = sc.nextInt();
+		sc.nextLine();
 
 		System.out.println("Inter The Name");
 		String Name = sc.next();
+		sc.nextLine();
 
 		System.out.println("Inter The Marks");
 		double Marks = sc.nextDouble();
@@ -36,6 +40,11 @@ public class Demo_5 {
 		con.close();
 		Ref.close();
 		sc.close();
+	}
+		catch(Exception ex)
+		{
+			System.out.println(ex.getMessage());
+		}
 	}
 
 }
